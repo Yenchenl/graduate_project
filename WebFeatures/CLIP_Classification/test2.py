@@ -9,18 +9,25 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 model, preprocess = clip.load("ViT-B/32", device=device)
 
 
-def read_class_text_from_csv(csv_file, encoding='utf-8'):
+def read_class_text_from_csv(csv_file, encoding='utf-8', line=0):
     with open(csv_file, 'r', encoding=encoding, errors='replace') as file:
         reader = csv.reader(file)
-        class_text = [row[1] for row in reader]  # 读取每一行第二个元素
+        class_text = [row[line] for row in reader]  # 读取每一行第二个元素
     return class_text
 
 def extract_subseries_from_csv(csv_file, brand_name, encoding='utf-8'):
     with open(csv_file, 'r', encoding=encoding, errors='replace') as file:
         reader = csv.reader(file)
         next(reader)  # 跳过CSV文件的标题行
-        subseries = [row[3].strip() for row in reader if row[1].strip() == brand_name]
+        subseries = [row[2].strip() for row in reader if row[1].strip() == brand_name]
     return subseries
+
+def extract_category_from_csv(csv_file, brand_name, subseries, sa = 0, encoding='utf-8'):
+    with open(csv_file, 'r', encoding=encoding, errors='replace') as file:
+        reader = csv.reader(file)
+        next(reader)  # 跳过CSV文件的标题行
+        shoes_price = [row[sa].strip() for row in reader if row[1].strip() == brand_name and row[2].strip() == subseries]
+    return shoes_price
 
 def predict(image_file, class_text):
     image = preprocess(Image.open(image_file)).unsqueeze(0).to(device)
