@@ -1,0 +1,147 @@
+<%- include('header') %>
+
+    <!-- Service Start -->
+
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto pb-4 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <p class="section-title bg-white text-center text-primary px-3">Our Services</p>
+                <h1 class="mb-5">洗鞋估價服務</h1>
+            </div>
+
+            <!-- loading 畫面的 HTML 結構 -->
+            <!-- <div id="loading-overlay">
+                <div id="loading-spinner"></div>
+            </div> -->
+
+
+            <!--機器運算中 Start-->
+            <a id="loading-overlay">
+                <div class="container-xxl py-5">
+                    <div class="container">
+                        <p class="csb_iden">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="62" height="62" fill="currentColor"
+                                class="bi bi-robot" viewBox="0 0 16 16">
+                                <path
+                                    d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5ZM3 8.062C3 6.76 4.235 5.765 5.53 5.886a26.58 26.58 0 0 0 4.94 0C11.765 5.765 13 6.76 13 8.062v1.157a.933.933 0 0 1-.765.935c-.845.147-2.34.346-4.235.346-1.895 0-3.39-.2-4.235-.346A.933.933 0 0 1 3 9.219V8.062Zm4.542-.827a.25.25 0 0 0-.217.068l-.92.9a24.767 24.767 0 0 1-1.871-.183.25.25 0 0 0-.068.495c.55.076 1.232.149 2.02.193a.25.25 0 0 0 .189-.071l.754-.736.847 1.71a.25.25 0 0 0 .404.062l.932-.97a25.286 25.286 0 0 0 1.922-.188.25.25 0 0 0-.068-.495c-.538.074-1.207.145-1.98.189a.25.25 0 0 0-.166.076l-.754.785-.842-1.7a.25.25 0 0 0-.182-.135Z" />
+                                <path
+                                    d="M8.5 1.866a1 1 0 1 0-1 0V3h-2A4.5 4.5 0 0 0 1 7.5V8a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1v1a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1v-.5A4.5 4.5 0 0 0 10.5 3h-2V1.866ZM14 7.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.5A3.5 3.5 0 0 1 5.5 4h5A3.5 3.5 0 0 1 14 7.5Z" />
+                            </svg>機器人辨識中...
+                        </p>
+                        <p class="csb_guide">請稍候</p>
+                    </div>
+                </div>
+            </a>
+            <!--機器運算中 End-->
+        </div>
+
+
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="box">
+                        <div class="box-text">
+                            <p>上傳一段您欲清洗的鞋子影片獲得免費估價</p>
+                            <div id="video-preview"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-sm-4">
+                        <div class="box">
+                            <div class="box-text2">
+                                <p>鞋子資訊</p>
+                            </div>
+                            <div class="box-text3 text-left">
+                                <p>品牌：<span id="result0" /></p>
+                                <p>系列：<span id="result1" /></p>
+                                <p>材質：<span id="result2" /></p>
+                                <p>鞋子價格：<span id="result3" /></p>
+                                <br>
+                                <p style="color: #d44242;"><b>清洗價格：<span id="result4" /></b></p>
+                            </div>
+                        </div>
+                    </div> -->
+                <div class="col-sm-12 button-container">
+                    <!--    
+                <form action="/upload" method="post" enctype="multipart/form-data">
+                    <label name="fileUpload" for="environment" class="upload-button">上傳影片/即時估價</label>
+                    <input name="fileUpload" type="file" accept="video/*" id="environment" capture="environment"
+                        style="display:none" onchange="previewVideo(this);" />
+                    <button class="upload-button" type="submit" onclick="return validateForm()">估價</button>
+                    估價button按下，右邊的鞋子資訊欄應該要出現內容，目前只是測試，故會將頁面導去formconfirmation
+                </form>
+            -->
+                    <!-- 先註解表單元素(避免跳轉導致Cli檔案上傳失敗) -->
+
+                    <label name="fileUpload" for="environment" class="upload-button">上傳影片/即時估價</label>
+                    <input name="fileUpload" type="file" accept="video/*" id="environment" capture="environment"
+                        style="display:none" onchange="previewVideo(this);" />
+                    <button class="upload-button" type="submit" onclick="" id="processVideo-button">估價</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!--預覽影片＋檢查機制-->
+    <script>
+        function previewVideo(input) {
+            var file = input.files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function () {
+                var videoPreview = document.getElementById('video-preview');
+                videoPreview.innerHTML = '<video src="' + reader.result + '" controls style="width:100%; height:100%; object-fit: contain"></video>';
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function validateForm() {
+            var fileUpload = document.getElementById("environment");
+            if (fileUpload.value == "") {
+                alert("請選擇欲清洗的鞋子影片！");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+    <!-- Python影片品牌辨識 -->
+    <script>
+        // function processVideo() {
+        //     var fileInput = document.getElementById('environment');
+        //     var file = fileInput.files[0];
+        //     var formData = new FormData();
+        //     formData.append('fileUpload', file);
+
+        //     fetch('/upload', {
+        //         method: 'POST',
+        //         body: formData
+        //     })
+        //         .then(response => response.text())
+        //         .then(result => {
+        //             const arrResult = result.split('\n');
+        //             for (let i = 0; i < arrResult.length; i++) {
+        //                 // console.log(result[i]);
+        //                 // document.getElementById(`result${i+1}`).innerText = result[i];
+        //                 document.getElementById(`result${i}`).innerText = arrResult[i];
+        //             }
+        //             console.log(arrResult);
+        //         })
+        //         .catch(error => {
+        //             console.error('運算錯誤:', error);
+        //         });
+        // }
+
+    </script>
+
+
+    <%- include('footer') %>
+
+        <!-- 開啟鏡頭參考 https://austingil.com/html-capture-attribute/ 使用行動裝置時會開啟手機鏡頭；使用電腦則會開啟資料夾-->

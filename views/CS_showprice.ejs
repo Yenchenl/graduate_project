@@ -1,0 +1,44 @@
+<%- include('header_CS') %>
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto pb-4 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <p class="section-title bg-white text-center text-primary px-3">CS Box</p>
+
+                <!-- 在 CS_showprice 頁面中加入用於顯示資料的容器 -->
+
+                <h1 class="mb-5">估價結果</h1>
+                <!-- CS_showprice.ejs -->
+
+            </div>
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="box">
+                            <div class="box-text2">
+                                <p>鞋子資訊</p>
+                            </div>
+                            <div class="box-text3 text-left">
+                                <p>品牌：<span id="result0" /></p>
+                                <p>系列：<span id="result1" /></p>
+                                <p>材質：<span id="result2" /></p>
+                                <p>鞋子價格：<span id="result3" /></p>
+                                <br>
+                                <p style="color: #d44242;"><b>清洗價格：<span id="result4" /></b></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="box-3">
+                            <div class="csbox-text">
+                                <p>請掃描以下QRcode前往網站付款</p>
+                                <div id="qrcode" class="text-center"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /GetButton.io widget -->
+    <%- include('footer_CS') %>

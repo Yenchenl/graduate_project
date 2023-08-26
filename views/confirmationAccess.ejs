@@ -1,0 +1,30 @@
+<%- include('header') %>
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <h1 class="text-center mb-5">訂單預約已成立!!</h1>
+            <h1>您好<%= user_name %>,您的預約內容如下：</h1>
+            <div class="box-text3 text-left">
+                <p>Email：<%= user_email %>
+                </p>
+                <p>品牌：<%= brand %>
+                </p>
+                <p>系列：<%= series %>
+                </p>
+                <p>材質：<%= material %>
+                </p>
+                <p>鞋子價格：<%= shoePrice %>
+                </p>
+                <br>
+                <p style="color: #d44242;"><b>清洗價格：<%= price %></b></p>
+            </div>
+            <!-- 沒辦法顯示表單內容給客人確認 -->
+        </div>
+    </div>
+    <script>
+        // 使用 JavaScript 的 setTimeout 函式，在頁面載入後 10 秒後跳轉到 /service 頁面
+        setTimeout(() => {
+            window.location.href = '/service';
+        }, 10000); // 10000 毫秒 = 10 秒
+    </script>
+    <%- include('websocket_footer') %>

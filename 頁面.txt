@@ -1,0 +1,1 @@
+到6/27為止，加入學長的QRcode程式碼（不確定是否有漏掉）新增contact（聯絡表單送出後會傳email）serviceForBox、ordercomplete確認CS櫃頁面/QRcode/serviceForBox 價格顯示頁面（包含返回＆LinePay結帳鈕）/ordercomplete 訂單完成頁面（顯示訂單編號(?) ）

@@ -1,0 +1,33 @@
+{
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "@line/bot-sdk": "^7.5.2",
+    "@serialport/parser-readline": "^3.0.0",
+    "axios": "^1.4.0",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "crypto-js": "^4.1.1",
+    "debug": "^2.6.9",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
+    "http-errors": "^1.6.3",
+    "linebot": "^1.6.1",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.5-lts.1",
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.9.3",
+    "path": "^0.12.7",
+    "qrcode": "^1.5.3",
+    "qs": "^6.11.2",
+    "serialport": "^9.0.0",
+    "socket.io": "^4.5.4",
+    "uuid": "^9.0.0",
+    "ws": "^8.13.0"
+  }
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+</head>
+
+<body>
+  <%= order.amount %>
+    <br>
+    <% order.packages.forEach((item)=> { %>
+      <br>
+      服務名稱：<%= item.products[0].name %>
+        <br>
+        品項：<%= item.id %>
+          、單價：<%= item.amount %>
+            .<%= order.currency %>
+              <% }) %>
+                <form action="/indexlinePay/linePay/<%= order.orderId %>" method="POST">
+                  <button type="submit">送出表單</button>
+                </form>
+</body>
+
+</html>

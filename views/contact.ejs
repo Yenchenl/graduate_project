@@ -1,0 +1,92 @@
+<%- include('header') %>
+
+<!-- Contact Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <p class="section-title bg-white text-center text-primary px-3">Contact Us</p>
+            <h1 class="mb-5">聯絡我們</h1>
+        </div>
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                <h3 class="mb-4">有任何需要幫忙的地方嗎？</h3>
+                <p class="mb-4">我們提供多元的聯絡管道，打造流暢的客戶服務環境。<br>
+                                您可以透過以下表單聯絡我們，客服人員將會盡快回覆您。<br>
+                                亦可於官網右下角點選Line標示，掃描QRcode與客服人員聯絡或使用以下Line ID加入LINE官方帳號：@？？？？？
+                </p>
+                <form action="sendMSG">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="name" name="name" required="required" placeholder="Your Name">
+                                <label for="name">姓名</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="email" name="email" required="requored" placeholder="Your Email">
+                                <label for="email">Email</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="subject" name="subject" required="required" placeholder="Subject">
+                                <label for="subject">主旨</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave a message here" id="message" name="message" required="required"
+                                    style="height: 250px"></textarea>
+                                <label for="message">訊息內容</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <!--button class="btn btn-primary rounded-pill py-3 px-5" type="submit">Send</button-->
+                            <button class="btn btn-dark rounded-pill py-3 px-5" type="submit" data-bs-toggle="modal" data-bs-target="#exModal" id="mysubmit">送出</button>
+                        </div>
+                    </div>
+                <!--/form-->
+                </form>
+            </div>
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                <h3 class="mb-4">Contact Details</h3>
+                <div class="d-flex border-bottom pb-3 mb-3">
+                    <div class="flex-shrink-0 btn-square bg-secondary rounded-circle">
+                        <i class="fa fa-map-marker-alt text-body"></i>
+                    </div>
+                    <div class="ms-3">
+                        <h6>來找我們</h6>
+                        <span>台北市文山區木柵路一段17巷1號</span>
+                    </div>
+                </div>
+                <div class="d-flex border-bottom pb-3 mb-3">
+                    <div class="flex-shrink-0 btn-square bg-secondary rounded-circle">
+                        <i class="fa fa-phone-alt text-body"></i>
+                    </div>
+                    <div class="ms-3">
+                        <h6>聯絡我們</h6>
+                        <span>+886 2236 8225</span>
+                    </div>
+                </div>
+                <div class="d-flex border-bottom-0 pb-3 mb-3">
+                    <div class="flex-shrink-0 btn-square bg-secondary rounded-circle">
+                        <i class="fa fa-envelope text-body"></i>
+                    </div>
+                    <div class="ms-3">
+                        <h6>寫信給我們</h6>
+                        <span>im@mail.shu.edu.tw</span>
+                    </div>
+                </div>
+
+                <iframe class="w-100 rounded"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14465.347805787653!2d121.543984!3d24.988664!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442aa077249f59b%3A0xfb5860fd7348f354!2z5LiW5paw5aSn5a24!5e0!3m2!1szh-TW!2stw!4v1687679435727!5m2!1szh-TW!2stw"
+                frameborder="0" style="min-height: 300px; border:0;" allowfullscreen="" aria-hidden="false"
+                tabindex="0"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact End -->
+
+<%- include('footer') %>

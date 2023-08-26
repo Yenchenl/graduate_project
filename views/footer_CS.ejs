@@ -1,0 +1,73 @@
+<script type="text/javascript">
+  var ws;
+  window.onload = function () {
+    ws = new WebSocket('ws://127.0.0.1:3000');
+
+    ws.onopen = function () {
+      console.log('與伺服器連線已開啟');
+      ws.send('Hello Server!');
+      generateQRCode();
+    };
+
+    ws.onmessage = function (event) {
+      if (event.data === 'goToNewPage') {
+        window.location.href = "/newPage";
+      } else {
+        console.clear(); // 在這裡加入console.clear()方法
+        console.log('收到伺服器的訊息：' + event.data);
+      }
+    };
+
+    ws.onerror = function (error) {
+      console.log('連線錯誤：' + error);
+    };
+
+    ws.onclose = function () {
+      console.log('連線已關閉');
+    };
+  };
+
+  function redirectToformconfirmation() {
+    // 使用 window.location.href 來導向到'formconfirmation'頁面
+    window.location.href = '/formconfirmation';
+    requestNewPage();
+  }
+
+  function requestNewPage() {
+    var webuuid = document.getElementById('webuuid').innerText;
+    ws.send('goToNewPage:' + webuuid);
+  }
+  // 取得當前網頁 URL
+  const url = new URL(window.location.href);
+
+  // 使用 URLSearchParams 取得 URL 查詢參數
+  const params = new URLSearchParams(url.search);
+
+  // 從 URL 查詢參數中取得名為 "arr_result" 的參數值
+  const arr_result = params.get('arr_result');
+
+  // 將 arr_result 的值解碼並轉換為陣列
+  const dataArray = decodeURIComponent(arr_result).split('\n');
+
+  for (let i = 0; i < dataArray.length; i++) {
+    document.getElementById(`result${i}`).innerText = dataArray[i];
+  }
+</script>
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/counterup/counterup.min.js"></script>
+<script src="lib/parallax/parallax.min.js"></script>
+<script src="lib/lightbox/js/lightbox.min.js"></script>
+<script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
+<script src="js/QRcode.js"></script>
+</body>
+
+</html>

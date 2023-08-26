@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+</head>
+
+<body>
+
+  <h2>訂單完成</h2>
+  <%= order.amount %>
+    <br>
+    <% order.packages.forEach((item)=> { %>
+      品項：<%= item.id %>
+        、單價：<%= item.amount %>
+          <% }) %>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<%- include('header_CS') %>
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto pb-4 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <p class="section-title bg-white text-center text-primary px-3">Our Services</p>
+                <h1 class="mb-5">CS智慧收鞋櫃</h1>
+            </div>
+            <div class="col-sm-12">
+                <div class="box-2">
+                    <div class="box-text2">
+                        <p>訂單資訊</p>
+                    </div>
+                    <div class="box-text3 text-left">
+                        <p>品牌：<%= brand %>
+                        </p>
+                        <p>系列：<%= series %>
+                        </p>
+                        <p>材質：<%= material %>
+                        </p>
+                        <p>鞋子價格：<%= shoePrice %>
+                        </p>
+                        <p>LineID：<%= user_id %>
+                        </p>
+                        <p>Email：<%= user_email %>
+                        </p>
+                        <p>姓名：<%= user_name %>
+                        </p>
+                        <p id="webuuidParagraph">webuuid:
+                        <div type='text' id="webuuid" class="text-center">
+                            <%=webuuid%>
+                        </div>
+                        </p>
+                        <br>
+                        <p style="color: #d44242;"><b>清洗價格：<%= price %></b></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 button-container mt-5">
+                <a href="/CS_start" class="addfriend-cancel"><i class="bi bi-house me-1"></i>取消並返回</a>
+                <!-- <a class="addfriend-button ms-2"
+                    onclick="redirectToformconfirmation();">立即使用LinePay</a> -->
+
+                <form action="/linePay/1" method="POST">
+                    <button type="submit" class="addfriend-button ms-2">立即使用LinePay</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        const submitButton = document.getElementById('sub-linePay');
+        submitButton.addEventListener('click', function (event) {
+            console.log('按鈕「立即使用LinePay」 -> click！');
+            const orderId = '1';
+            const url = `/indexlinePay/linePay/${orderId}`;
+            window.location.href = url;
+            // redirectToformconfirmation();
+            event.preventDefault();
+        })
+    </script>
+    <%- include('footer_CS') %>

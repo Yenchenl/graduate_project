@@ -1,0 +1,41 @@
+<%- include('header_CS') %>
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto pb-4 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <p class="section-title bg-white text-center text-primary px-3">Our Services</p>
+                <h1 class="mb-5">CS智慧收鞋櫃</h1>
+            </div>
+            <div class="col-sm-12">
+                <div class="box-2">
+                    <div class="box-text2">
+                        <p>鞋子資訊</p>
+                    </div>
+                    <div class="box-text3 text-left">
+                        <p>品牌：<%= brand %>
+                        </p>
+                        <p>系列：<%= series %>
+                        </p>
+                        <p>材質：<%= material %>
+                        </p>
+                        <p>鞋子價格：<%= shoePrice %>
+                        </p>
+                        <p id="webuuidParagraph">webuuid:
+                        <div type='text' id="webuuid" class="text-center">
+                            <%=webuuid%>
+                        </div>
+                        </p>
+                        <br>
+                        <p style="color: #d44242;"><b>清洗價格：<%= price %></b></p>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center mt-3" style="color: red;">前往結帳前，需先綁定Line官方帳號</p>
+            <div class="col-sm-12 button-container">
+                <a href="/CS_start" class="addfriend-cancel"><i class="bi bi-house me-1"></i>取消並返回</a>
+                <a href="http://localhost:3000/authorize" class="addfriend-button ms-2">立即綁定Line會員</a>
+            </div>
+        </div>
+    </div>
+
+    <%- include('footer_CS') %>

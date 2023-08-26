@@ -1,0 +1,77 @@
+<%- include('header') %>
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto pb-4 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <p class="section-title bg-white text-center text-primary px-3">Our Services</p>
+                <h1 class="mb-5">線上皮鞋色差辨識</h1>
+            </div>
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="box">
+                            <div class="box-text">
+                                <p>上傳一段您欲補色的鞋子影片<br>獲得免費估價及選色建議</p>
+                                <div id="video-preview"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="box">
+                            <div class="box-text2">
+                                <p>鞋子資訊</p>
+                            </div>
+                            <div class="box-text3 text-left">
+                                <p>品牌：</p>
+                                <p>系列：</p>
+                                <p>材質：</p>
+                                <p>鞋子價格：</p>
+                                <br>
+                                <p style="color: #d44242;"><b>清洗價格：</b></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 button-container">
+                        <form action="/upload" method="post" enctype="multipart/form-data">
+                            <label name="fileUpload" for="environment" class="upload-button">上傳影片/即時估價</label>
+                            <input name="fileUpload" type="file" accept="video/*" id="environment" capture="environment"
+                                style="display:none" onchange="previewVideo(this);" />
+                            <button class="upload-button" type="submit" onclick="return validateForm()">估價</button>
+                            <!--估價button按下，右邊的鞋子資訊欄應該要出現內容，目前只是測試，故會將頁面導去formconfirmation-->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--預覽影片＋檢查機制-->
+    <script>
+        function previewVideo(input) {
+            var file = input.files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function () {
+                var videoPreview = document.getElementById('video-preview');
+                videoPreview.innerHTML = '<video src="' + reader.result + '" controls style="width:100%; height:100%; object-fit: contain"></video>';
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function validateForm() {
+            var fileUpload = document.getElementById("environment");
+            if (fileUpload.value == "") {
+                alert("請選擇欲補色的鞋子影片！");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+
+    <%- include('footer') %>
+
+    <!-- 開啟鏡頭參考 https://austingil.com/html-capture-attribute/ 使用行動裝置時會開啟手機鏡頭；使用電腦則會開啟資料夾-->
