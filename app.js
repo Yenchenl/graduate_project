@@ -222,7 +222,7 @@ app.get('/QRcodepage', function (req, res) {
 
 //LINE加入會員頁面
 app.get('/LINEmember', (req, res) => {
-  const { qrcodetext, webuuid, brand, series, material, shoePrice, price } = req.query;
+  const { qrcodetext, webuuid, brand, series, type,material, shoePrice, price } = req.query;
   res.render('LINEmember', {
     title: 'LINEmember',
     active: 'linemember',
@@ -230,6 +230,7 @@ app.get('/LINEmember', (req, res) => {
     webuuid,
     brand,
     series,
+    type,
     material,
     shoePrice,
     price,
@@ -276,7 +277,7 @@ app.get('/CS_showprice', function (req, res) {
 
 
 app.get('/CS_joinline', function (req, res) {
-  const { qrcodetext, webuuid, brand, series, material, shoePrice, price } = req.query;
+  const { qrcodetext, webuuid, brand, series, type, material, shoePrice, price } = req.query;
   res.render('CS_joinline',
     {
       title: 'CS_joinline',
@@ -285,6 +286,7 @@ app.get('/CS_joinline', function (req, res) {
       webuuid,
       brand,
       series,
+      type,
       material,
       shoePrice,
       price,
@@ -328,9 +330,10 @@ app.get('/callback', (req, res) => {
       + '&webuuid=' + webuuid
       + '&brand=' + encodeURIComponent(shoeDataArray[0])
       + '&series=' + encodeURIComponent(shoeDataArray[1])
-      + '&material=' + encodeURIComponent(shoeDataArray[2])
-      + '&shoePrice=' + encodeURIComponent(shoeDataArray[3])
-      + '&price=' + encodeURIComponent(shoeDataArray[4])
+      + '&type=' + encodeURIComponent(shoeDataArray[2])
+      + '&material=' + encodeURIComponent(shoeDataArray[3])
+      + '&shoePrice=' + encodeURIComponent(shoeDataArray[4])
+      + '&price=' + encodeURIComponent(shoeDataArray[5])
       + '&user_id=' + user_id
       + '&user_email=' + user_email
       + '&user_name=' + user_name; // 使用 req.query.qrcode 作為參數值
@@ -358,9 +361,10 @@ app.get('/generateQRCode', (req, res) => {
     + '&webuuid=' + webuuid
     + '&brand=' + encodeURIComponent(shoeDataArray[0])
     + '&series=' + encodeURIComponent(shoeDataArray[1])
-    + '&material=' + encodeURIComponent(shoeDataArray[2])
-    + '&shoePrice=' + encodeURIComponent(shoeDataArray[3])
-    + '&price=' + encodeURIComponent(shoeDataArray[4]); // 使用 req.query.qrcode 作為參數值
+    + '&type=' + encodeURIComponent(shoeDataArray[2])
+    + '&material=' + encodeURIComponent(shoeDataArray[3])
+    + '&shoePrice=' + encodeURIComponent(shoeDataArray[4])
+    + '&price=' + encodeURIComponent(shoeDataArray[5]); // 使用 req.query.qrcode 作為參數值
   const qrCodeFileName = randomCode + '.png';
   const qrCodeFilePath = path.join(__dirname, 'public', 'qrcode', qrCodeFileName);
 
@@ -378,14 +382,16 @@ app.get('/generateQRCode', (req, res) => {
 app.get('/newPage', (req, res) => {
   const brand = shoeDataArray[0];
   const series = shoeDataArray[1];
-  const material = shoeDataArray[2];
-  const shoePrice = shoeDataArray[3];
-  const price = shoeDataArray[4];
+  const type = shoeDataArray[2];
+  const material = shoeDataArray[3];
+  const shoePrice = shoeDataArray[4];
+  const price = shoeDataArray[5];
   res.render('confirmationAccess', {
     title: 'confirmationAccess',
     active: 'confirmationAccess',
     brand: brand,
     series: series,
+    type: type,
     material: material,
     shoePrice: shoePrice,
     price: price,
@@ -398,14 +404,16 @@ app.get('/newPage', (req, res) => {
 app.get('/formconfirmation', function (req, res) {
   const brand = shoeDataArray[0];
   const series = shoeDataArray[1];
-  const material = shoeDataArray[2];
-  const shoePrice = shoeDataArray[3];
-  const price = shoeDataArray[4];
+  const type = shoeDataArray[2];
+  const material = shoeDataArray[3];
+  const shoePrice = shoeDataArray[4];
+  const price = shoeDataArray[5];
   res.render('formconfirmation', {
     title: 'Formconfirmation',
     active: 'formconfirmation',
     brand: brand,
     series: series,
+    type:type,
     material: material,
     shoePrice: shoePrice,
     price: price,
@@ -465,7 +473,7 @@ app.post('/saveQRCode2db', (req, res) => {
 });
 
 app.get('/CS_linepay', function (req, res) {
-  let { qrcodetext, webuuid, brand, series, material, shoePrice, price, user_id, user_email, user_name } = req.query;
+  let { qrcodetext, webuuid, brand, series, type, material, shoePrice, price, user_id, user_email, user_name } = req.query;
   console.log("已取得order_id為" + order_id);
   res.render('CS_linepay', {
     title: 'CS_linepay',
@@ -474,6 +482,7 @@ app.get('/CS_linepay', function (req, res) {
     webuuid,
     brand,
     series,
+    type,
     material,
     shoePrice,
     price,

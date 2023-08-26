@@ -27,12 +27,12 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 model, preprocess = clip.load("ViT-B/32", device=device)
 
 # 要读取的鞋子数据
-csv_file = './WebFeatures/CLIP_Classification/shoes/test3.csv'
+csv_file = './WebFeatures/CLIP_Classification/shoes/test3_changed.csv'
 # 鞋子图片文件夹路径
 shoes_folder = './WebFeatures/CLIP_Classification/shoes/shoesPic1'
 
 # 读取CSV文件中的文本
-class_text = test2.read_class_text_from_csv(csv_file, encoding='utf-8')
+class_text = test2.read_class_text_from_csv(csv_file, encoding='utf-8', line=1)
 unique_class_text = list(set(class_text))
 
 # 存储每个系列对应的概率总和和计数
@@ -69,15 +69,23 @@ for filename in os.listdir(shoes_folder):
 max_prob_series = max(series_probabilities, key=series_probabilities.get)
 max_prob = series_probabilities[max_prob_series] / series_counts[max_prob_series]
 
+using_type = test2.extract_category_from_csv(csv_file, brand_name, max_prob_series, sa = 3, encoding='utf-8')
+type_pr = str(using_type[0])
+using_material = test2.extract_category_from_csv(csv_file, brand_name, max_prob_series, sa = 4, encoding='utf-8')
+material_pr = str(using_material[0])
+price = test2.extract_category_from_csv(csv_file, brand_name, max_prob_series, sa = 5, encoding='utf-8')
+price_pr = int(price[0])
+washing_price = price_pr/10
+
 print(brand_name)
 # print("Max Probability Series:", max_prob_series)
 print(max_prob_series)
 # print("Max Probability:", max_prob)
 
-print("XXX")
-print("XXX")
-print("XXX")
-print("XXX")
+print(type_pr)
+print(material_pr)
+print(price_pr)
+print(washing_price)
 
 ## delete all of image
 jpg_files = glob.glob(os.path.join(shoes_folder, '*.jpg'))
