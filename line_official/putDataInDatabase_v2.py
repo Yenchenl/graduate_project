@@ -1,11 +1,11 @@
 import pymysql
 # 連線資料
 def insert_data(userid, emailid, name):
-    db1 = pymysql.connect(host = "127.0.0.1",
-                        user = "root",
-                        passwd = "password",
-                        database = "shoes",
-                        port = 3306)
+    db1 = pymysql.connect(host = "your host",
+                        user = "your user",
+                        passwd = "your password",
+                        database = "your shoes",
+                        port = your port)
     try:
         with db1.cursor() as cursor:
             sql = "SELECT COUNT(*) FROM InputData_EMAIL_UserID WHERE UserID = %s AND EMAILID = %s"
