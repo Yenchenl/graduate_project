@@ -100,13 +100,11 @@ app.use(function (err, req, res, next) {
 
 
 const mariadb = mysql.createConnection({
-  host: '127.0.0.1',
-  user: 'root',
-  // user: 'aicsac',
-  password: 'password',
-  // password: '123456',
-  database: 'aicsbox',
-  port: '3306',
+  host: 'your local host',
+  user: 'your user',
+  password: 'your password',
+  database: 'your database',
+  port: 'your port',
 });
 
 mariadb.connect((err) => {
@@ -117,24 +115,6 @@ mariadb.connect((err) => {
   }
 });
 
-// 連接資料庫 //
-// const connection = mysql.createConnection({
-//   // host: '192.168.0.117',
-//   host: '192.168.0.117',
-//   user: 'mariadbuser1',
-//   password: 'qimezOFeMInewoY24i5ELi81jIVOrI',
-//   database: 'aicsbox',
-// });
-
-// // 建立連線
-// connection.connect((err) => {
-//   if (err) {
-//     console.error('無法連線到資料庫：', err);
-//     return;
-//   }
-//   console.log('已成功連線到資料庫！');
-// });
-// 連接資料庫 //
 
 
 //PAGE start//
@@ -201,9 +181,9 @@ app.get('/login', function(req, res) {
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // 設定 Line Bot 的相關資訊
-const client_id = "1661489480"; // 請填入您的 Line Bot 客戶端 ID
-const client_secret = "f2aae745f05db0c0e085e2e0d54fecac"; // 請填入您的 Line Bot 客戶端密鑰
-const redirect_uri = "http://localhost:3000/callback"; // 請根據您的設定修改此 URL
+const client_id = "your client id"; // 請填入您的 Line Bot 客戶端 ID
+const client_secret = "your client secret"; // 請填入您的 Line Bot 客戶端密鑰
+const redirect_uri = "your redirect uri"; // 請根據您的設定修改此 URL
 
 // 當用戶訪問 /authorize 路徑時，將其重定向到 Line 授權頁面
 app.get('/authorize', (req, res) => {
@@ -616,7 +596,7 @@ app.get('/sendMSG', (req, res) => {
 //   console.log('Use this link to open the website: http://localhost:3000/');
 // });
 
-const port = 3000;
+const port = your port;
 
 // 加入arduino //
 server.listen(port, () => {
