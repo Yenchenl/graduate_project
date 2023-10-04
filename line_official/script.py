@@ -5,9 +5,9 @@ import sys
 from urllib.parse import unquote
 
 # 輸入linebot端資料
-client_id = "1661489480"
-client_secret = "f2aae745f05db0c0e085e2e0d54fecac"
-redirect_uri = "http://localhost:3000/callback"
+client_id = "your client id"
+client_secret = "your client secret"
+redirect_uri = "redirect uri"
 user_id = ""
 user_email = ""
 user_name = ""
