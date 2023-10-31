@@ -1,5 +1,7 @@
 # Shoe Cleaning Service System（SCSS）
 歡迎來到鞋履清潔服務系統（SCSS）！SCSS是一個網路平台，結合了各種技術，為鞋履清潔和護理服務提供現代、智能和便捷的用戶體驗。本檔案提供了系統的主要特點概述。
+![image](https://github.com/Yenchenl/graduate_project/assets/73538798/27b1e8aa-9fd4-4f62-a922-08a24d6543ae)
+
 
 ## 系統特點
 
